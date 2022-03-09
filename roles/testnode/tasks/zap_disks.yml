@@ -32,7 +32,7 @@
   with_items: "{{ ansible_mounts }}"
   when:
     - item.mount != '/' and
-      item.mount != '/var' and
+      not item.mount.startswith('/var') and
       item.mount != '/tmp' and
       item.mount != '/root' and
       item.mount != '/home' and
